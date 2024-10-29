@@ -2,9 +2,9 @@
 
 High level overview on how the DMSS (Dead Man's Switch System) works.
 
-# Motiviation
+# Motivation
 
-We are in the midst of a migration of secret identifying information into digital and/or online forms. Examples of this would be cryptocurrency wallet keys, password login information and other cryptographic key data. The problem exists of how to pass this information along to trusted parties in the event of emergency or even death. The motivation behind this project is to design and implement an automated system for securely and reliably sharing secrets to trusted individuals as it becomes necessary.
+We are in the midst of a migration of secret identifying information into digital and/or online forms. Examples of this would be cryptocurrency wallet keys, password login information and other cryptographic key data. The problem exists in how to pass this information along to trusted parties in the event of emergency or even death. The motivation behind this project is to design and implement an automated system to securely and reliably sharing secrets to trusted individuals as it becomes necessary.
 
 # Overview using an example
 
@@ -38,7 +38,7 @@ This is only an example. The example could have more or less trustees and the me
                 +-------+
 ```
 
-Alice is responsible for setting up the system and creating the documents that will be given to the trustees when one or more of the trigger conditions is met.
+Alice is responsible for setting up the system and creating the documents that will be given to the trustees when one or more of the trigger conditions are met.
 
 Bob, Charlie and Dana are responsible for constructing and decrypting the data when they're notified by the DMSS system.
 
@@ -50,16 +50,16 @@ To setup the switch, Alice would first determine what the secret information is 
 
 Alice then needs to choose at least one trustee which will receive the information. In this example she has choosen Bob, Charlie and Dana. Once Alice has the secret documents and the trustees she can now secure the secret and distribute the decryption key to the trustees. This process involves the following steps:
 
-1. Generate symetric passphrase
-2. Encrypt secret documents with symetric passphrase
-3. Split symetric passphrase between trustees using Shamir's Secret Sharing algorithm
-4. Generate several hashes of the symetric passphrase parts using a nonce to verify existance in the future
-5. Distribute symetric passphrase parts to trustees
+1. Generate symmetric passphrase
+2. Encrypt secret documents with symmetric passphrase
+3. Split symnetric passphrase between trustees using Shamir's Secret Sharing algorithm
+4. Generate several hashes of the symmetric passphrase parts using a nonce to verify existance in the future
+5. Distribute symmetric passphrase parts to trustees
 6. Remove all traces of passphrase parts from Alice's computer to prevent access from attackers
 7. Generate several hashes of the encrypted documents to verify existance in the future
 8. Distribute encrypted secret documents to trustees or hold somewhere for them to be distributed at a later time to make collusion impossible
 
-All files and messages distributed to trustees are end-to-end encrypted with only the receipient having access to decrypt.
+All files and messages distributed to trustees are end-to-end encrypted with only the recipient having access to decrypt.
 
 ## Maintenance checks
 
@@ -68,15 +68,15 @@ After the setup and for the majority of the life of the DMSS, Alice will need to
 Maintenance checks include the following:
 
 - Verify all trustees can communicate with each other securely
-- Verify all symetric passphrase parts are still available and not corrupted
+- Verify all symmetric passphrase parts are still available and not corrupted
 - Verify encrypted documents still exist and are not corrupted
-- Verify owner still approves of secracy by signing messages which is only possible for owner
+- Verify owner still approves of secrecy by signing messages which is only possible for owner
 - Trigger test switches from time to time to verify system is working and to train trustees on how to use the system
 
-Maintenance is very important to have some confidence that the secret information will be transfered at the time of death.
+Maintenance is very important to have some confidence that the secret information will be transferred at the time of death.
 
 ## Constructing secrets after death
 
 Ultimately, the DMSS will trigger after a configured amount of time, when she fails to prove to her computer or server that she is still alive. At that point, the DMSS will let the trustees know and will distribute the encrypted secrets if not done so already.
 
-At this point, the trustees need to share their symetric passphrase parts in order to create the passphrase which will unlock the encrypted secrets.
+At this point, the trustees need to share their symmetric passphrase parts in order to create the passphrase which will unlock the encrypted secrets.
